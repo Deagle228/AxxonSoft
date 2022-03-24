@@ -2,13 +2,13 @@
   
 int main(int argc, char* argv[])
 {
-    Result resultReference(argv[1]);
+    const std::filesystem::path directory(argv[1]);
+    Result resultReference;
     if (argc == 2)
     {
         if (std::filesystem::is_directory(argv[1]))
         {
-            
-            std::cout << "Number of strings " << resultReference.firstTaskResult();
+            std::cout << "Number of strings " << resultReference.firstTaskResult(directory);
         }
         else
         {
@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
     {
         if (std::filesystem::is_directory(argv[1]))
         {
-            std::cout << "Number of occurrences "<< resultReference.secondTaskResult(argv[2]);
+            std::cout << "Number of occurrences "<< resultReference.secondTaskResult(directory, argv[2]);
         }
         else
         {
@@ -33,5 +33,6 @@ int main(int argc, char* argv[])
         std::cout << "Error! Wrong count of members.";
         return 0;
     }
+
     return 0;
 }
